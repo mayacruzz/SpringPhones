@@ -3,22 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert new phone item</title>
+<script>
+function validateForm() {
+    var brand = document.forms["phoneForm"]["brand"].value;
+    var model = document.forms["phoneForm"]["model"].value;
+    var storageCapacity = document.forms["phoneForm"]["storageCapacity"].value;
+    var color = document.forms["phoneForm"]["color"].value;
+    var price = document.forms["phoneForm"]["price"].value;
+
+    if (brand.trim() === "") {
+        alert("Brand is required");
+        return false;
+    }
+
+    if (model.trim() === "") {
+        alert("Model is required");
+        return false;
+    }
+
+    if (isNaN(storageCapacity) || storageCapacity <= 0) {
+        alert("Storage Capacity must be a positive number");
+        return false;
+    }
+
+    if (color.trim() === "") {
+        alert("Color is required");
+        return false;
+    }
+
+    if (isNaN(price) || price <= 0) {
+        alert("Price must be a positive number");
+        return false;
+    }
+
+    return true;
+}
+</script>
 </head>
 <body>
-<form th:object="${newPhone}" th:action="@{/update/{id}(id=${newPhone.id})}" method=POST>
+<form th:object="${newPhone}" th:action="@{/update/{id}(id=${newPhone.id})}" method="POST" name="phoneForm" onsubmit="return validateForm()">
 
-	Brand: <input name="brand" size="20" th:field="*{brand}"><br />
-	Model: <input name="model" size="20" th:field="*{model}"><br /> 
-	Storage Capacity: <input name="storageCapacity" size="20" th:field="*{storageCapacity}"><br /> 
-	Color: <input name="color" size="20" th:field="*{color}"><br /> 
-	Price:<input name="price" size="20" th:field="*{price}"><br />
-	
-	Account Holder Name:<input name="userInfo.userName" size="20" th:field="*{userInfo.userName}"><br />
-	Phone Number:<input name="userInfo.phoneNumber" size="20" th:field="*{userInfo.phoneNumber}"><br />
-	E-sim Used:<input name="userInfo.esim" size="20" th:field="*{userInfo.esim}"><br />
-	
-	<input name="submit" type="submit" value="submit" />
-	
+   
+    Brand: <input name="brand" size="20" th:field="*{brand}" required><br />
+    Model: <input name="model" size="20" th:field="*{model}" required><br /> 
+    Storage Capacity: <input name="storageCapacity" size="20" th:field="*{storageCapacity}" type="number" required><br /> 
+    Color: <input name="color" size="20" th:field="*{color}" required><br /> 
+    Price: <input name="price" size="20" th:field="*{price}" type="number" required><br />
+    
+    Account Holder Name: <input name="userInfo.userName" size="20" th:field="*{userInfo.userName}" required><br />
+    Phone Number: <input name="userInfo.phoneNumber" size="20" th:field="*{userInfo.phoneNumber}" required><br />
+    E-sim Used: <input name="userInfo.esim" size="20" th:field="*{userInfo.esim}" required><br />
+    
+    <input name="submit" type="submit" value="submit" />
+    
 </form>
 <a href="viewAll">View all Cell Phones</a>
 
