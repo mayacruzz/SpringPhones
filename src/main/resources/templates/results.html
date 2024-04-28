@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View All Phones</title>
+</head>
+<body>
+<form>
+<table>
+	<tr th:each="currentPhone : ${phones}" >
+	
+	<td th:long="${currentPhone.id}" />
+	<td th:text="${currentPhone.brand}" />
+	<td th:text="${currentPhone.model}" />
+	<td th:int="${currentPhone.storageCapacity}" />
+	<td th:text="${currentPhone.color}" />
+	<td th:double="${currentPhone.price}" />
+	
+	 <td th:text="${currentPhone.userInfo.userName}" /> 
+	 <td th:text="${currentPhone.userInfo.phoneNumber}" /> 
+	 <td th:text="${currentPhone.userInfo.esim}" />
+	 
+	 <td><a th:href="@{/edit/{id}(id=${currentPhone.id})}">Edit</a></td>
+	 <td><a th:href="@{/delete/{id}(id=${currentPhone.id})}">Delete</a></td> </tr>
+	 
+</table>
+</form>
+
+<a href="../inputPhone">Add a new phone</a>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert new phone item</title>
+</head>
+<body>
+<form th:object="${newPhone}" th:action="@{/update/{id}(id=${newPhone.id})}" method=POST>
+
+	Brand: <input name="brand" size="20" th:field="*{brand}"><br />
+	Model: <input name="model" size="20" th:field="*{model}"><br /> 
+	Storage Capacity: <input name="storageCapacity" size="20" th:field="*{storageCapacity}"><br /> 
+	Color: <input name="color" size="20" th:field="*{color}"><br /> 
+	Price:<input name="price" size="20" th:field="*{price}"><br />
+	
+	Account Holder Name:<input name="userInfo.userName" size="20" th:field="*{userInfo.userName}"><br />
+	Phone Number:<input name="userInfo.phoneNumber" size="20" th:field="*{userInfo.phoneNumber}"><br />
+	E-sim Used:<input name="userInfo.esim" size="20" th:field="*{userInfo.esim}"><br />
+	
+	<input name="submit" type="submit" value="submit" />
+	
+</form>
+<a href="viewAll">View all Cell Phones</a>
+
+</body>
+</html>

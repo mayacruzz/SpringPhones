@@ -18,13 +18,13 @@ import dmacc.contoller.BeanConfiguration;
 import dmacc.repository.PhoneRepository;
 
 @SpringBootApplication
-public class SpringPhonesApplication implements CommandLineRunner {
+public class SpringPhonesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringPhonesApplication.class, args);
 	}
 
-	@Autowired
+	/*@Autowired
 	PhoneRepository repo;
 	
 	@Override
@@ -51,5 +51,5 @@ public class SpringPhonesApplication implements CommandLineRunner {
 			System.out.println(people.toString());
 		}
 			((AbstractApplicationContext) appContext).close();
-		}
+		}*/
 }
